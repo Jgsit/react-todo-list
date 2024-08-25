@@ -1,6 +1,7 @@
 function Footer(props) {
   return (
     <footer>
+      {/* Conteneur principal du footer */}
       <div className="container">
         <p>
           Made with{" "}
@@ -32,4 +33,5 @@ function Footer(props) {
     </footer>
   );
 }
+
 export default Footer;

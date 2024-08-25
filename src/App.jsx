@@ -74,7 +74,22 @@ function App() {
         <section className="tasks">
           {/* Affiche les tâches qui correspondent au texte de recherche */}
           {tasks.map((task, index) => {
-            if (task.text.includes(searchTask)) {
+            if (isSearching) {
+              if (task.text.includes(searchTask)) {
+                return (
+                  <Task
+                    key={index}
+                    index={index}
+                    text={task.text}
+                    done={task.done}
+                    handleTaskStatus={handleTaskStatus}
+                    handleTaskDelete={handleTaskDelete}
+                  />
+                );
+              } else {
+                return null; // Retourne null si la tâche ne correspond pas à la recherche
+              }
+            } else {
               return (
                 <Task
                   key={index}
@@ -86,7 +101,6 @@ function App() {
                 />
               );
             }
-            return null; // Retourne null si la tâche ne correspond pas à la recherche
           })}
         </section>
         {/* Composant Utils pour la recherche ou l'ajout d'une tâche */}
